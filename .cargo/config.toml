@@ -1,3 +1,6 @@
+[alias]
+lint = "clippy --all-targets --all-features"
+
 [source.crates-io]
 replace-with = 'rsproxy-sparse'
 
