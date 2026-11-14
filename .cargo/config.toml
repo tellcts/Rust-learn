@@ -1,11 +1,5 @@
-[alias]
-lint = "clippy --all-targets --all-features"
-
 [source.crates-io]
 replace-with = 'rsproxy-sparse'
-
-[source.rsproxy]
-registry = "https://rsproxy.cn/crates.io-index"
 
 [source.rsproxy-sparse]
 registry = "sparse+https://rsproxy.cn/index/"
@@ -13,6 +7,9 @@ registry = "sparse+https://rsproxy.cn/index/"
 [net]
 git-fetch-with-cli = true
 
-[target.'cfg(target_os = "linux")']
-linker = "clang"
-rustflags = ["-C", "link-arg=-fuse-ld=/usr/bin/mold"]
+[target.'cfg(all(target_os = "linux",target_env = "gnu"))']
+linker = "gcc"
+rustflags = ["-C", "link-arg=-fuse-ld=mold"]
+
+[alias]
+lint = "clippy --all-targets --all-features"
