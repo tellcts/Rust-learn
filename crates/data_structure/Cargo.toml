@@ -1,5 +1,5 @@
 [package]
-name = "ds"
+name = "data_structure"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -7,5 +7,5 @@ authors.workspace = true
 repository.workspace = true
 
 [lib]
-name = "ds"
+name = "data_structure"
 path = "src/lib.rs"
