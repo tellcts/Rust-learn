@@ -63,18 +63,25 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
+    use rstest_reuse::{apply, template};
 
-    test!(
-        test_is_match{
-            Solution::is_match_recursive;
-            Solution::is_match_iterative;
+    #[template]
+    #[rstest]
+    #[case("aa", "a", false)]
+    #[case("aa", "a*", true)]
+    #[case("ab", ".*", true)]
+    #[case("aab", "c*a*b", true)]
+    #[case("mississippi", "mis*is*p*.", false)]
+    fn test_cases(#[case] s: &str, #[case] p: &str, #[case] expected: bool) {}
 
-            "aa", "a" => false;
-            "aa", "a*" => true;
-            "ab", ".*" => true;
-            "aab", "c*a*b" => true;
-            "mississippi", "mis*is*p*." => false;
-        }
-    );
+    #[apply(test_cases)]
+    fn test_is_match_recursive(s: &str, p: &str, expected: bool) {
+        assert_eq!(Solution::is_match_recursive(s, p), expected);
+    }
+
+    #[apply(test_cases)]
+    fn test_is_match_iterative(s: &str, p: &str, expected: bool) {
+        assert_eq!(Solution::is_match_iterative(s, p), expected);
+    }
 }

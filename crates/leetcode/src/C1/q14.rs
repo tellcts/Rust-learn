@@ -27,15 +27,13 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_longest_common_prefix{
-            Solution::longest_common_prefix;
-
-            vec![""] => "".to_string();
-            vec!["dog", "racecar", "car"] => "".to_string();
-            vec!["flower", "flow", "flight"] => "fl".to_string();
-        }
-    );
+    #[rstest]
+    #[case(vec![""],String::from(""))]
+    #[case(vec!["dog","racecar","car"],String::from(""))]
+    #[case(vec!["flower", "flow", "flight"],String::from("fl"))]
+    fn test_longest_common_prefix(#[case] strs: Vec<&str>, #[case] expected: String) {
+        assert_eq!(Solution::longest_common_prefix(strs), expected);
+    }
 }

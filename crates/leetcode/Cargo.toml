@@ -9,3 +9,7 @@ repository.workspace = true
 [lib]
 name = "leetcode"
 path = "src/lib.rs"
+
+[dev-dependencies]
+rstest = { workspace = true }
+rstest_reuse = { workspace = true }

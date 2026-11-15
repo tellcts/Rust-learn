@@ -27,16 +27,14 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_reverse{
-            Solution::reverse;
-
-            0 => 0;
-            120 => 21;
-            123 => 321;
-            -123 => -321;
-        }
-    );
+    #[rstest]
+    #[case(0, 0)]
+    #[case(120, 21)]
+    #[case(123, 321)]
+    #[case(-123,-321)]
+    fn test_reverse(#[case] x: i32, #[case] expected: i32) {
+        assert_eq!(Solution::reverse(x), expected);
+    }
 }

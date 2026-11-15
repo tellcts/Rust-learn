@@ -16,15 +16,13 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_convert{
-            Solution::convert;
-
-            String::from("A"), 1 => String::from("A");
-            String::from("PAYPALISHIRING"), 3 => String::from("PAHNAPLSIIGYIR");
-            String::from("PAYPALISHIRING"), 4 => String::from("PINALSIGYAHRPI");
-        }
-    );
+    #[rstest]
+    #[case(String::from("A"), 1, String::from("A"))]
+    #[case(String::from("PAYPALISHIRING"), 3, String::from("PAHNAPLSIIGYIR"))]
+    #[case(String::from("PAYPALISHIRING"), 4, String::from("PINALSIGYAHRPI"))]
+    fn test_convert(#[case] s: String, #[case] num_rows: usize, #[case] expected: String) {
+        assert_eq!(Solution::convert(s, num_rows), expected);
+    }
 }

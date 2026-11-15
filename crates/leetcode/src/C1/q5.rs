@@ -38,15 +38,18 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
+    use rstest_reuse::{apply, template};
 
-    test!(
-        test_longest_palindrome{
-            Solution::longest_palindrome_1;
+    #[template]
+    #[rstest]
+    #[case("cbbd", "bb")]
+    #[case("babad", "bab")]
+    #[case("qwetzcanaczt", "tzcanaczt")]
+    fn test_cases(#[case] s: &str, #[case] expected: &str) {}
 
-            "cbbd" => "bb";
-            "babad" => "bab";
-            "qwetzcanaczt" => "tzcanaczt";
-        }
-    );
+    #[apply(test_cases)]
+    fn test_longest_palindrome_1(s: &str, expected: &str) {
+        assert_eq!(Solution::longest_palindrome_1(s), expected);
+    }
 }

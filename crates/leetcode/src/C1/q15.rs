@@ -42,15 +42,13 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_three_sum{
-            Solution::three_sum;
-
-            vec![0, 0, 0] => vec![vec![0, 0, 0]];
-            vec![0, 1, 1] => Vec::<Vec<i32>>::new();
-            vec![-1, 0, 1, 2, -1, -4] => vec![vec![-1, -1, 2], vec![-1, 0, 1]];
-        }
-    );
+    #[rstest]
+    #[case(vec![0,0,0],vec![vec![0,0,0]])]
+    #[case(vec![0,1,1],Vec::<Vec<i32>>::new())]
+    #[case(vec![-1, 0, 1, 2, -1, -4],vec![vec![-1, -1, 2], vec![-1, 0, 1]])]
+    fn test_three_sum(#[case] nums: Vec<i32>, #[case] expected: Vec<Vec<i32>>) {
+        assert_eq!(Solution::three_sum(nums), expected);
+    }
 }

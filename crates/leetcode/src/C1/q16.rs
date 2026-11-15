@@ -64,14 +64,12 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_three_sum_closest{
-            Solution::three_sum_closest;
-
-            vec![0, 0, 0], 1 => 0;
-            vec![-1, 2, 1, -4], 1 => 2;
-        }
-    );
+    #[rstest]
+    #[case(vec![0,0,0],1,0)]
+    #[case(vec![-1,2,1,-4],1,2)]
+    fn test_three_sum_closest(#[case] nums: Vec<i32>, #[case] target: i32, #[case] expected: i32) {
+        assert_eq!(Solution::three_sum_closest(nums, target), expected);
+    }
 }

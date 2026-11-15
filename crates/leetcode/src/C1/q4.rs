@@ -106,17 +106,37 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
+    use rstest_reuse::{apply, template};
 
-    test!(
-        test_find_median_sorted_arrays{
-            Solution::find_median_sorted_arrays_1;
-            Solution::find_median_sorted_arrays_2;
-            Solution::find_median_sorted_arrays_3;
+    #[template]
+    #[rstest]
+    #[case(vec![1, 3], vec![2], 2.0)]
+    #[case(vec![1, 2], vec![3, 4], 2.5)]
+    #[case(vec![1, 1], vec![1, 1], 1.0)]
+    fn test_cases(#[case] nums1: Vec<i32>, #[case] nums2: Vec<i32>, #[case] expected: f64) {}
 
-            vec![1, 3], vec![2] => 2.0;
-            vec![1, 2], vec![3, 4] => 2.5;
-            vec![1, 1], vec![1, 1] => 1.0;
-        }
-    );
+    #[apply(test_cases)]
+    fn test_find_median_sorted_arrays_1(nums1: Vec<i32>, nums2: Vec<i32>, expected: f64) {
+        assert_eq!(
+            Solution::find_median_sorted_arrays_1(nums1, nums2),
+            expected
+        );
+    }
+
+    #[apply(test_cases)]
+    fn test_find_median_sorted_arrays_2(nums1: Vec<i32>, nums2: Vec<i32>, expected: f64) {
+        assert_eq!(
+            Solution::find_median_sorted_arrays_2(nums1, nums2),
+            expected
+        );
+    }
+
+    #[apply(test_cases)]
+    fn test_find_median_sorted_arrays_3(nums1: Vec<i32>, nums2: Vec<i32>, expected: f64) {
+        assert_eq!(
+            Solution::find_median_sorted_arrays_3(nums1, nums2),
+            expected
+        );
+    }
 }

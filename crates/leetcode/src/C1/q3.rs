@@ -27,15 +27,13 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_length_of_longest_substring{
-            Solution::length_of_longest_substring;
-
-            "bbbbb" => 1;
-            "pwwkew" => 3;
-            "abcabcbb" => 3;
-        }
-    );
+    #[rstest]
+    #[case("bbbbb", 1)]
+    #[case("pwwkew", 3)]
+    #[case("abcabcbb", 3)]
+    fn test_length_of_longest_substring(#[case] s: &str, #[case] expected: usize) {
+        assert_eq!(Solution::length_of_longest_substring(s), expected);
+    }
 }

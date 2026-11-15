@@ -26,14 +26,12 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_max_area{
-            Solution::max_area;
-
-            vec![1,1] => 1;
-            vec![1, 8, 6, 2, 5, 4, 8, 3, 7] => 49;
-        }
-    );
+    #[rstest]
+    #[case(vec![1,1],1)]
+    #[case(vec![1, 8, 6, 2, 5, 4, 8, 3, 7],49)]
+    fn test_max_area(#[case] height: Vec<i32>, #[case] expected: i32) {
+        assert_eq!(Solution::max_area(height), expected);
+    }
 }

@@ -40,14 +40,16 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_letter_combinations{
-            Solution::letter_combinations;
+    fn convert(values: Vec<&str>) -> Vec<String> {
+        values.into_iter().map(String::from).collect()
+    }
 
-            "2".to_string() => vec!["a","b","c"];
-            "23".to_string() => vec!["ad","ae","af","bd","be","bf","cd","ce","cf"];
-        }
-    );
+    #[rstest]
+    #[case(String::from("2"),convert(vec!["a","b","c"]))]
+    #[case(String::from("23"),convert(vec!["ad","ae","af","bd","be","bf","cd","ce","cf"]))]
+    fn test_letter_combinations(#[case] digits: String, #[case] expected: Vec<String>) {
+        assert_eq!(Solution::letter_combinations(digits), expected);
+    }
 }

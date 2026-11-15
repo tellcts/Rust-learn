@@ -37,17 +37,24 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
+    use rstest_reuse::{apply, template};
 
-    test!(
-        test_is_palindrome{
-            Solution::is_palindrome;
-            Solution::is_palindrome_optimize;
+    #[template]
+    #[rstest]
+    #[case(121, true)]
+    #[case(-121,false)]
+    #[case(10, false)]
+    #[case(12321, true)]
+    fn test_cases(#[case] x: i32, #[case] expected: bool) {}
 
-            121 => true;
-            -121 => false;
-            10 => false;
-            12321 => true;
-        }
-    );
+    #[apply(test_cases)]
+    fn test_is_palindrome(x: i32, expected: bool) {
+        assert_eq!(Solution::is_palindrome(x), expected);
+    }
+
+    #[apply(test_cases)]
+    fn test_is_palindrome_optimize(x: i32, expected: bool) {
+        assert_eq!(Solution::is_palindrome_optimize(x), expected);
+    }
 }

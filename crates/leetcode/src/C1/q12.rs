@@ -25,17 +25,15 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_int_to_roman{
-            Solution::int_to_roman;
-
-            3 => "III".to_string();
-            4 => "IV".to_string();
-            9 => "IX".to_string();
-            58 => "LVIII".to_string();
-            1994 => "MCMXCIV".to_string();
-        }
-    );
+    #[rstest]
+    #[case(3, String::from("III"))]
+    #[case(4, String::from("IV"))]
+    #[case(9, String::from("IX"))]
+    #[case(58, String::from("LVIII"))]
+    #[case(1994, String::from("MCMXCIV"))]
+    fn test_int_to_roman(#[case] num: i32, #[case] expected: String) {
+        assert_eq!(Solution::int_to_roman(num), expected);
+    }
 }

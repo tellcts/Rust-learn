@@ -37,17 +37,15 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_roman_to_int{
-            Solution::roman_to_int;
-
-            "III" => 3;
-            "IV" => 4;
-            "IX" => 9;
-            "LVIII" => 58;
-            "MCMXCIV" => 1994;
-        }
-    );
+    #[rstest]
+    #[case("III", 3)]
+    #[case("IV", 4)]
+    #[case("IX", 9)]
+    #[case("LVIII", 58)]
+    #[case("MCMXCIV", 1994)]
+    fn test_roman_to_int(#[case] s: &str, #[case] expected: i32) {
+        assert_eq!(Solution::roman_to_int(s), expected);
+    }
 }
