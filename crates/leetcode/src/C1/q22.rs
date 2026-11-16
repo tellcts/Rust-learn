@@ -34,15 +34,13 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_generate_parenthesis{
-            Solution::generate_parenthesis;
-
-            1 => vec!["()"];
-            2 => vec!["(())","()()"];
-            3 => vec!["((()))","(()())","(())()","()(())","()()()"];
-        }
-    );
+    #[rstest]
+    #[case(1,vec!["()"])]
+    #[case(2, vec!["(())","()()"])]
+    #[case(3,vec!["((()))","(()())","(())()","()(())","()()()"])]
+    fn test_generate_parenthesis(#[case] n: usize, #[case] expected: Vec<&str>) {
+        assert_eq!(Solution::generate_parenthesis(n), expected);
+    }
 }

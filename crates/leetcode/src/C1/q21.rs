@@ -34,20 +34,18 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::{list_from_vec, test};
+    use crate::list_from_vec;
+    use rstest::rstest;
 
-    test!(
-        test_merge_two_lists{
-            Solution::merge_two_lists;
-
-            list_from_vec(vec![1,2,4]), list_from_vec(vec![1,3,4]) =>
-            list_from_vec(vec![1,1,2,3,4,4]);
-
-            list_from_vec(vec![]), list_from_vec(vec![0]) =>
-            list_from_vec(vec![0]);
-
-            list_from_vec(vec![]), list_from_vec(vec![]) =>
-            None;
-        }
-    );
+    #[rstest]
+    #[case(list_from_vec(vec![1,2,4]), list_from_vec(vec![1,3,4]), list_from_vec(vec![1,1,2,3,4,4]))]
+    #[case(list_from_vec(vec![]), list_from_vec(vec![0]), list_from_vec(vec![0]))]
+    #[case(list_from_vec(vec![]), list_from_vec(vec![]), None)]
+    fn test_merge_two_lists(
+        #[case] l1: Option<Box<ListNode>>,
+        #[case] l2: Option<Box<ListNode>>,
+        #[case] expected: Option<Box<ListNode>>,
+    ) {
+        assert_eq!(Solution::merge_two_lists(l1, l2), expected);
+    }
 }

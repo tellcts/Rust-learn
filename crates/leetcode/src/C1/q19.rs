@@ -31,15 +31,18 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::{list_from_vec, test};
+    use crate::list_from_vec;
+    use rstest::rstest;
 
-    test!(
-        test_remove_nth_from_end{
-            Solution::remove_nth_from_end;
-
-            list_from_vec(vec![1]), 1 => None;
-            list_from_vec(vec![1,2]), 1 => Some(Box::new(ListNode::new(1)));
-            list_from_vec(vec![1,2,3,4,5]), 2 => list_from_vec(vec![1,2,3,5]);
-        }
-    );
+    #[rstest]
+    #[case(list_from_vec(vec![1]), 1, None)]
+    #[case(list_from_vec(vec![1,2]), 1, Some(Box::new(ListNode::new(1))))]
+    #[case(list_from_vec(vec![1,2,3,4,5]), 2, list_from_vec(vec![1,2,3,5]))]
+    fn test_remove_nth_from_end(
+        #[case] head: Option<Box<ListNode>>,
+        #[case] n: i32,
+        #[case] expected: Option<Box<ListNode>>,
+    ) {
+        assert_eq!(Solution::remove_nth_from_end(head, n), expected);
+    }
 }

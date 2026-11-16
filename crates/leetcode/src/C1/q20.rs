@@ -32,15 +32,13 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_is_valid{
-            Solution::is_valid;
-
-            "()".to_string() => true;
-            "()[]{}".to_string() => true;
-            "){}[]".to_string() => false;
-        }
-    );
+    #[rstest]
+    #[case(String::from("()"), true)]
+    #[case(String::from("()[]{}"), true)]
+    #[case(String::from("){}[]"), false)]
+    fn test_is_valid(#[case] s: String, #[case] expected: bool) {
+        assert_eq!(Solution::is_valid(s), expected);
+    }
 }

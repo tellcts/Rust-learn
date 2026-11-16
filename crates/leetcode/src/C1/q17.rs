@@ -42,14 +42,10 @@ mod tests {
     use super::*;
     use rstest::rstest;
 
-    fn convert(values: Vec<&str>) -> Vec<String> {
-        values.into_iter().map(String::from).collect()
-    }
-
     #[rstest]
-    #[case(String::from("2"),convert(vec!["a","b","c"]))]
-    #[case(String::from("23"),convert(vec!["ad","ae","af","bd","be","bf","cd","ce","cf"]))]
-    fn test_letter_combinations(#[case] digits: String, #[case] expected: Vec<String>) {
+    #[case(String::from("2"),vec!["a","b","c"])]
+    #[case(String::from("23"),vec!["ad","ae","af","bd","be","bf","cd","ce","cf"])]
+    fn test_letter_combinations(#[case] digits: String, #[case] expected: Vec<&str>) {
         assert_eq!(Solution::letter_combinations(digits), expected);
     }
 }
