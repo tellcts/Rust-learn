@@ -22,14 +22,12 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_remove_element{
-            Solution::remove_element;
-
-            &mut [3,2,2,3], 3 => 2;
-            &mut [0,1,2,2,3,0,4,2], 2 => 5;
-        }
-    );
+    #[rstest]
+    #[case(&mut [3,2,2,3], 3, 2)]
+    #[case(&mut [0,1,2,2,3,0,4,2], 2, 5)]
+    fn test_remove_element(#[case] nums: &mut [i32], #[case] target: i32, #[case] expected: usize) {
+        assert_eq!(Solution::remove_element(nums, target), expected);
+    }
 }

@@ -39,14 +39,16 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_combination_sum{
-            Solution::combination_sum;
-
-            &[2,3,6,7], 7 => vec![vec![7], vec![2,2,3]];
-            &[2,3,5], 8 => vec![vec![3,5], vec![2,3,3], vec![2,2,2,2]];
-        }
-    );
+    #[rstest]
+    #[case(&[2,3,6,7], 7, vec![vec![7],vec![2,2,3]])]
+    #[case(&[2,3,5], 8, vec![vec![3,5],vec![2,3,3],vec![2,2,2,2]])]
+    fn test_combination_sum(
+        #[case] candidates: &[i32],
+        #[case] target: i32,
+        #[case] expected: Vec<Vec<i32>>,
+    ) {
+        assert_eq!(Solution::combination_sum(candidates, target), expected);
+    }
 }

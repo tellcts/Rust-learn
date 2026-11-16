@@ -58,23 +58,21 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_find_substring{
-            Solution::find_substring;
+    fn convert(values: Vec<&str>) -> Vec<String> {
+        values.into_iter().map(String::from).collect()
+    }
 
-            String::from("barfoothefoobarman"),
-            vec![String::from("foo"),String::from("bar")]
-            => vec![0,9];
-
-            String::from("wordgoodgoodgoodbestword"),
-            vec![String::from("word"),String::from("good"),String::from("best"),String::from("word")]
-            => vec![];
-
-            String::from("barfoofoobarthefoobarman"),
-            vec![String::from("bar"),String::from("foo"),String::from("the")]
-            => vec![6,9,12];
-        }
-    );
+    #[rstest]
+    #[case(String::from("barfoothefoobarman"),convert(vec!["foo","bar"]),vec![0,9])]
+    #[case(String::from("barfoofoobarthefoobarman"),convert(vec!["bar","foo","the"]),vec![6,9,12])]
+    #[case(String::from("wordgoodgoodgoodbestword"),convert(vec!["word","good","best","word"]),vec![])]
+    fn test_find_substring(
+        #[case] s: String,
+        #[case] words: Vec<String>,
+        #[case] expected: Vec<usize>,
+    ) {
+        assert_eq!(Solution::find_substring(s, words), expected);
+    }
 }

@@ -27,16 +27,23 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
+    use rstest_reuse::{apply, template};
 
-    test!(
-        test_str_str{
-            Solution::str_str;
-            Solution::str_str_opt;
+    #[template]
+    #[rstest]
+    #[case(String::from("sadbutsad"), String::from("sad"), 0)]
+    #[case(String::from("leetcode"), String::from("leeto"), -1)]
+    #[case(String::from("tellcts"), String::from("tellctsespain"), -1)]
+    fn test_cases(#[case] haystack: String, #[case] needle: String, #[case] expected: i32) {}
 
-            String::from("sadbutsad"), String::from("sad") => 0;
-            String::from("leetcode"), String::from("leeto") => -1;
-            String::from("tellcts"), String::from("tellctsespain") => -1;
-        }
-    );
+    #[apply(test_cases)]
+    fn test_str_str(haystack: String, needle: String, expected: i32) {
+        assert_eq!(Solution::str_str(haystack, needle), expected);
+    }
+
+    #[apply(test_cases)]
+    fn test_str_str_opt(haystack: String, needle: String, expected: i32) {
+        assert_eq!(Solution::str_str_opt(haystack, needle), expected);
+    }
 }

@@ -19,15 +19,13 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_max_sub_array_greedy{
-            Solution::max_sub_array_greedy;
-
-            vec![1, 2, -1] => 3;
-            vec![5, 4, -1, 7, 8] => 23;
-            vec![-2, 1, -3, 4, -1, 2, 1, -5, 4] => 6;
-        }
-    );
+    #[rstest]
+    #[case(vec![1, 2, -1], 3)]
+    #[case(vec![5, 4, -1, 7, 8], 23)]
+    #[case(vec![-2, 1, -3, 4, -1, 2, 1, -5, 4], 6)]
+    fn test_max_sub_array_greedy(#[case] nums: Vec<i32>, #[case] expected: i32) {
+        assert_eq!(Solution::max_sub_array_greedy(nums), expected);
+    }
 }

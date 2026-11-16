@@ -36,15 +36,13 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_search_range{
-            Solution::search_range;
-
-            vec![], 0 => vec![-1,-1];
-            vec![5,7,7,8,8,10], 8 => vec![3,4];
-            vec![5,7,7,8,8,10], 6 => vec![-1,-1];
-        }
-    );
+    #[rstest]
+    #[case(vec![], 0, vec![-1,-1])]
+    #[case(vec![5,7,7,8,8,10], 8, vec![3,4])]
+    #[case(vec![5,7,7,8,8,10], 6, vec![-1,-1])]
+    fn test_search_range(#[case] nums: Vec<i32>, #[case] target: i32, #[case] expected: Vec<i32>) {
+        assert_eq!(Solution::search_range(nums, target), expected);
+    }
 }

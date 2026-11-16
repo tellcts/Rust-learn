@@ -56,15 +56,18 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::{list_from_vec, test};
+    use crate::list_from_vec;
+    use rstest::rstest;
 
-    test!(
-        test_reverse_k_group{
-            Solution::reverse_k_group;
-
-            None, 4 => None;
-            list_from_vec(vec![1,2,3,4,5]), 2 => list_from_vec(vec![2,1,4,3,5]);
-            list_from_vec(vec![1,2,3,4,5]), 3 => list_from_vec(vec![3,2,1,4,5]);
-        }
-    );
+    #[rstest]
+    #[case(None, 4, None)]
+    #[case(list_from_vec(vec![1,2,3,4,5]), 2, list_from_vec(vec![2,1,4,3,5]))]
+    #[case(list_from_vec(vec![1,2,3,4,5]), 3, list_from_vec(vec![3,2,1,4,5]))]
+    fn test_reverse_k_group(
+        #[case] head: Option<Box<ListNode>>,
+        #[case] k: usize,
+        #[case] expected: Option<Box<ListNode>>,
+    ) {
+        assert_eq!(Solution::reverse_k_group(head, k), expected);
+    }
 }

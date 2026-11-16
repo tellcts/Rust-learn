@@ -21,14 +21,12 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_remove_duplicates{
-            Solution::remove_duplicates;
-
-           &mut [1,1,2] => 2;
-           &mut [0,0,1,1,1,2,2,3,3,4] => 5;
-        }
-    );
+    #[rstest]
+    #[case(&mut [1,1,2],2)]
+    #[case(&mut [0,0,1,1,1,2,2,3,3,4],5)]
+    fn test_remove_duplicates(#[case] nums: &mut [i32], #[case] expected: usize) {
+        assert_eq!(Solution::remove_duplicates(nums), expected);
+    }
 }

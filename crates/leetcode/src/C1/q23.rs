@@ -31,18 +31,18 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::{list_from_vec, test};
+    use crate::list_from_vec;
+    use rstest::rstest;
 
-    test!(
-        test_merge_k_lists{
-            Solution::merge_k_lists;
-
-            vec![list_from_vec(vec![1,4,5]),list_from_vec(vec![1,3,4]),list_from_vec(vec![2,6])] =>
-            list_from_vec(vec![1,1,2,3,4,4,5,6]);
-
-            vec![] => None;
-
-            vec![None] => None;
-        }
-    );
+    #[rstest]
+    #[case(vec![],None)]
+    #[case(vec![None],None)]
+    #[case(vec![list_from_vec(vec![1,4,5]),list_from_vec(vec![1,3,4]),list_from_vec(vec![2,6])],
+           list_from_vec(vec![1,1,2,3,4,4,5,6]))]
+    fn test_merge_k_lists(
+        #[case] lists: Vec<Option<Box<ListNode>>>,
+        #[case] expected: Option<Box<ListNode>>,
+    ) {
+        assert_eq!(Solution::merge_k_lists(lists), expected);
+    }
 }

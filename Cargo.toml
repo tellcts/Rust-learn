@@ -22,5 +22,5 @@ lto = "thin"
 codegen-units = 1
 
 [workspace.dependencies]
-rstest = { version = "0.28.0" }
-rstest_reuse = { version = "0.7.1" }
+rstest = "0.28.0"
+rstest_reuse = "0.7.1"

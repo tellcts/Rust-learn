@@ -48,15 +48,13 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_search{
-            Solution::search;
-
-            vec![1], 0 => -1;
-            vec![4,5,6,7,0,1,2], 0 => 4;
-            vec![4,5,6,7,0,1,2], 3 => -1;
-        }
-    );
+    #[rstest]
+    #[case(vec![1], 0, -1)]
+    #[case(vec![4,5,6,7,0,1,2], 0, 4)]
+    #[case(vec![4,5,6,7,0,1,2], 3, -1)]
+    fn test_search(#[case] nums: Vec<i32>, #[case] target: i32, #[case] expected: i32) {
+        assert_eq!(Solution::search(nums, target), expected);
+    }
 }

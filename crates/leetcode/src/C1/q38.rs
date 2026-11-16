@@ -34,14 +34,12 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_count_and_say{
-            Solution::count_and_say;
-
-            1 => String::from("1");
-            4 => String::from("1211");
-        }
-    );
+    #[rstest]
+    #[case(1, String::from("1"))]
+    #[case(4, String::from("1211"))]
+    fn test_count_and_say(#[case] n: usize, #[case] expected: String) {
+        assert_eq!(Solution::count_and_say(n), expected);
+    }
 }

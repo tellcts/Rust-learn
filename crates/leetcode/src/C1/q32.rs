@@ -82,17 +82,28 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
+    use rstest_reuse::{apply, template};
 
-    test!(
-        test_longest_valid_parenthesis{
-            Solution::longest_valid_parenthesis_1;
-            Solution::longest_valid_parenthesis_2;
-            Solution::longest_valid_parenthesis_3;
+    #[template]
+    #[rstest]
+    #[case(String::from(""), 0)]
+    #[case(String::from("())"), 2)]
+    #[case(String::from(")()())"), 4)]
+    fn test_cases(#[case] s: String, #[case] expected: usize) {}
 
-            String::new() => 0;
-            String::from("())") => 2;
-            String::from(")()())") => 4;
-        }
-    );
+    #[apply(test_cases)]
+    fn test_longest_valid_parenthesis_1(s: String, expected: usize) {
+        assert_eq!(Solution::longest_valid_parenthesis_1(s), expected);
+    }
+
+    #[apply(test_cases)]
+    fn test_longest_valid_parenthesis_2(s: String, expected: usize) {
+        assert_eq!(Solution::longest_valid_parenthesis_2(s), expected);
+    }
+
+    #[apply(test_cases)]
+    fn test_longest_valid_parenthesis_3(s: String, expected: usize) {
+        assert_eq!(Solution::longest_valid_parenthesis_3(s), expected);
+    }
 }

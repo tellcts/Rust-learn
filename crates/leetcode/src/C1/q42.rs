@@ -28,14 +28,12 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_trap{
-            Solution::trap;
-
-            vec![4, 2, 0, 3, 2, 5] => 9;
-            vec![0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1] => 6;
-        }
-    );
+    #[rstest]
+    #[case(vec![4, 2, 0, 3, 2, 5], 9)]
+    #[case(vec![0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1], 6)]
+    fn test_trap(#[case] height: Vec<i32>, #[case] expected: i32) {
+        assert_eq!(Solution::trap(height), expected);
+    }
 }

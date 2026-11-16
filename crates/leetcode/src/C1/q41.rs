@@ -3,7 +3,6 @@
 pub struct Solution;
 
 impl Solution {
-    #[allow(clippy::needless_range_loop)]
     pub fn first_missing_positive(mut nums: Vec<i32>) -> i32 {
         let len = nums.len();
 
@@ -14,8 +13,8 @@ impl Solution {
             }
         }
 
-        for i in 0..len {
-            if nums[i] != i as i32 + 1 {
+        for (i, &num) in nums.iter().enumerate() {
+            if num != i as i32 + 1 {
                 return i as i32 + 1;
             }
         }
@@ -27,15 +26,13 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_first_missing_positive{
-            Solution::first_missing_positive;
-
-            vec![1, 2, 0] => 3;
-            vec![3, 4, -1, 1] => 2;
-            vec![7, 8, 9, 11, 12] => 1;
-        }
-    );
+    #[rstest]
+    #[case(vec![1, 2, 0], 3)]
+    #[case(vec![3, 4, -1, 1], 2)]
+    #[case(vec![7, 8, 9, 11, 12], 1)]
+    fn test_first_missing_positive(#[case] nums: Vec<i32>, #[case] expected: i32) {
+        assert_eq!(Solution::first_missing_positive(nums), expected);
+    }
 }
