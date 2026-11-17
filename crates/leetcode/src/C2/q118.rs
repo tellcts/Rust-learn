@@ -22,27 +22,16 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    // text
-    // ```
-    //        1
-    //      1   1
-    //    1   2   1
-    //  1   3   3   1
-    //1   4   6   4   1
-    // ```
-    test!(
-        test_generate{
-            Solution::generate;
-
-            5 => vec![
-                 vec![1],
-                 vec![1, 1],
-                 vec![1, 2, 1],
-                 vec![1, 3, 3, 1],
-                 vec![1, 4, 6, 4, 1]
-                ]
-        }
-    );
+    #[rstest]
+    #[case(5,vec![vec![1],
+                  vec![1, 1],
+                  vec![1, 2, 1],
+                  vec![1, 3, 3, 1],
+                  vec![1, 4, 6, 4, 1]]
+    )]
+    fn test_generate(#[case] num_rows: i32, #[case] expected: Vec<Vec<i32>>) {
+        assert_eq!(Solution::generate(num_rows), expected);
+    }
 }

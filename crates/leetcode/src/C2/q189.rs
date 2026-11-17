@@ -14,18 +14,13 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use rstest::rstest;
 
-    macro_rules! test {
-        ($input:expr,$k:expr,$expected:expr) => {
-            let mut input = $input;
-            Solution::rotate(&mut input, $k);
-            assert_eq!(input, $expected)
-        };
-    }
-
-    #[test]
-    fn test_rotate() {
-        test!(vec![1, 2], 3, vec![2, 1]);
-        test!(vec![1, 2, 3, 4, 5, 6, 7], 3, vec![5, 6, 7, 1, 2, 3, 4]);
+    #[rstest]
+    #[case(&mut [1,2], 3, &[2,1])]
+    #[case(&mut [1,2,3,4,5,6,7], 3, &[5,6,7,1,2,3,4])]
+    fn test_rotate(#[case] nums: &mut [i32], #[case] k: i32, #[case] expected: &[i32]) {
+        Solution::rotate(nums, k);
+        assert_eq!(nums, expected);
     }
 }

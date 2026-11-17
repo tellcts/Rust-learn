@@ -14,7 +14,7 @@ impl Solution {
         dp[n + 1]
     }
 
-    pub fn rob_optimize(nums: Vec<i32>) -> i32 {
+    pub fn rob_iterative(nums: Vec<i32>) -> i32 {
         let (mut a, mut b) = (0, 0);
 
         for num in nums {
@@ -28,15 +28,22 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
+    use rstest_reuse::{apply, template};
 
-    test!(
-        test_rob{
-            Solution::rob_dp;
-            Solution::rob_optimize;
+    #[template]
+    #[rstest]
+    #[case(vec![1,2,3,1], 4)]
+    #[case(vec![2,7,9,3,1], 12)]
+    fn test_cases(#[case] nums: Vec<i32>, #[case] expected: i32) {}
 
-            vec![1, 2, 3, 1] => 4;
-            vec![2, 7, 9, 3, 1] => 12;
-        }
-    );
+    #[apply(test_cases)]
+    fn test_rob_dp(nums: Vec<i32>, expected: i32) {
+        assert_eq!(Solution::rob_dp(nums), expected);
+    }
+
+    #[apply(test_cases)]
+    fn test_rob_iterative(nums: Vec<i32>, expected: i32) {
+        assert_eq!(Solution::rob_iterative(nums), expected);
+    }
 }

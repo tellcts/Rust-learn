@@ -25,15 +25,13 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_product_except_self{
-            Solution::product_except_self;
-
-            vec![1, 2] => vec![2, 1];
-            vec![1, 2, 3, 4] => vec![24, 12, 8, 6];
-            vec![6, 1, 2, 3, 0, 5] => vec![0, 0, 0, 0, 180, 0];
-        }
-    );
+    #[rstest]
+    #[case(vec![1, 2], vec![2, 1])]
+    #[case(vec![1, 2, 3, 4], vec![24, 12, 8, 6])]
+    #[case(vec![6, 1, 2, 3, 0, 5], vec![0, 0, 0, 0, 180, 0])]
+    fn test_product_except_self(#[case] nums: Vec<i32>, #[case] expected: Vec<i32>) {
+        assert_eq!(Solution::product_except_self(nums), expected);
+    }
 }

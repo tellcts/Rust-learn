@@ -1,53 +1,48 @@
 //! 完全平方数
 
 const N: usize = 10000;
-static mut INITIALIZED: bool = false;
-static mut DP: [i32; N + 1] = [i32::MAX >> 1; N + 1];
 
-fn init_once() {
-    unsafe {
-        if INITIALIZED {
-            return;
+const fn init_dp() -> [i32; N + 1] {
+    let mut dp = [i32::MAX >> 1; N + 1];
+    dp[0] = 0;
+
+    let mut i = 1;
+
+    while i <= 100 {
+        let mut j = i * i;
+
+        while j <= N {
+            let candidate = dp[j - i * i] + 1;
+
+            dp[j] = if dp[j] < candidate { dp[j] } else { candidate };
+            j += 1;
         }
 
-        INITIALIZED = true;
-        DP[0] = 0;
-
-        for i in 1..=100 {
-            for j in (i * i)..=N {
-                DP[j] = DP[j].min(DP[j - i * i] + 1);
-            }
-        }
+        i += 1;
     }
+
+    dp
 }
+
+static DP: [i32; N + 1] = init_dp();
 
 pub struct Solution;
 
 impl Solution {
     pub fn num_squares(n: i32) -> i32 {
-        unsafe {
-            init_once();
-            DP[n as usize]
-        }
+        DP[n as usize]
     }
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    // text
-    // ```
-    // 12 = 4 + 4 + 4 => 3
-    // 13 = 9 + 4 => 2
-    // ```
-    test!(
-        test_num_squares{
-            Solution::num_squares;
-
-            12 => 3;
-            13 => 2;
-        }
-    );
+    #[rstest]
+    #[case(12, 3)]
+    #[case(13, 2)]
+    fn test_num_squares(#[case] n: i32, #[case] expected: i32) {
+        assert_eq!(Solution::num_squares(n), expected);
+    }
 }

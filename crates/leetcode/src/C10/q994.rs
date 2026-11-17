@@ -48,24 +48,22 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    // text
-    // ```
-    // [2,1,1]
-    // [1,1,0]   =>   4
-    // [0,1,1]
-    //
-    // [2,1,1]
-    // [0,1,1]   =>   -1
-    // [1,0,1]
-    // ```
-    test!(
-       test_oranges_rotting{
-           Solution::oranges_rotting;
-
-           vec![vec![2, 1, 1], vec![1, 1, 0], vec![0, 1, 1]] => 4;
-           vec![vec![2, 1, 1], vec![0, 1, 1], vec![1, 0, 1]] => -1;
+    #[rstest]
+    #[case(vec![vec![2, 1, 1]
+               ,vec![1, 1, 0]
+               ,vec![0, 1, 1]]
+               ,
+               4
+    )]
+    #[case(vec![vec![2, 1, 1]
+               ,vec![0, 1, 1]
+               ,vec![1, 0, 1]]
+               ,
+               -1
+    )]
+    fn test_oranges_rotting(#[case] grid: Vec<Vec<i32>>, #[case] expected: i32) {
+        assert_eq!(Solution::oranges_rotting(grid), expected);
     }
-    );
 }

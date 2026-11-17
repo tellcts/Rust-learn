@@ -32,15 +32,22 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
+    use rstest_reuse::{apply, template};
 
-    test!(
-        test_climb_stairs{
-            Solution::climb_stairs_dp;
-            Solution::climb_stairs_optimize;
+    #[template]
+    #[rstest]
+    #[case(2, 2)]
+    #[case(3, 3)]
+    fn test_cases(#[case] n: i32, #[case] expected: i32) {}
 
-            2 => 2;
-            3 => 3;
-        }
-    );
+    #[apply(test_cases)]
+    fn test_climb_stairs_dp(n: i32, expected: i32) {
+        assert_eq!(Solution::climb_stairs_dp(n), expected);
+    }
+
+    #[apply(test_cases)]
+    fn test_climb_stairs_optimize(n: i32, expected: i32) {
+        assert_eq!(Solution::climb_stairs_optimize(n), expected);
+    }
 }

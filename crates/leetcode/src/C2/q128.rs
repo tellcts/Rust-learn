@@ -25,15 +25,13 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_longest_consecutive{
-            Solution::longest_consecutive;
-
-            vec![0] => 1;
-            vec![100, 4, 200, 1, 3, 2] => 4;
-            vec![0, 3, 7, 2, 5, 8, 4, 6, 0, 1] => 9;
-        }
-    );
+    #[rstest]
+    #[case(vec![0], 1)]
+    #[case(vec![100, 4, 200, 1, 3, 2], 4)]
+    #[case(vec![0, 3, 7, 2, 5, 8, 4, 6, 0, 1], 9)]
+    fn test_longest_consecutive(#[case] nums: Vec<i32>, #[case] expected: i32) {
+        assert_eq!(Solution::longest_consecutive(nums), expected);
+    }
 }

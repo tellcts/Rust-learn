@@ -35,14 +35,12 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_find_anagrams{
-            Solution::find_anagrams;
-
-            "abab".to_string(), "ab".to_string() => vec![0, 1, 2];
-            "cbaebabacd".to_string(), "abc".to_string() => vec![0, 6];
-        }
-    );
+    #[rstest]
+    #[case(String::from("abab"), String::from("ab"), vec![0, 1, 2])]
+    #[case(String::from("cbaebabacd"), String::from("abc"), vec![0, 6])]
+    fn test_find_anagrams(#[case] s: String, #[case] p: String, #[case] expected: Vec<i32>) {
+        assert_eq!(Solution::find_anagrams(s, p), expected);
+    }
 }

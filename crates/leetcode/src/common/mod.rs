@@ -1,7 +1,5 @@
 //! Store some common codes.
 
-mod macros;
-
 /// Definition for singly-linked list.
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {

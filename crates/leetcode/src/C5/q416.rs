@@ -58,15 +58,22 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
+    use rstest_reuse::{apply, template};
 
-    test!(
-        test_can_partition{
-            Solution::can_partition_dp;
-            Solution::can_partition_recursive;
+    #[template]
+    #[rstest]
+    #[case(vec![1, 2, 3, 5], false)]
+    #[case(vec![1, 5, 11, 5], true)]
+    fn test_cases(#[case] nums: Vec<i32>, #[case] expected: bool) {}
 
-            vec![1, 2, 3, 5] => false;
-            vec![1, 5, 11, 5] => true;
-        }
-    );
+    #[apply(test_cases)]
+    fn test_can_partition_recursive(nums: Vec<i32>, expected: bool) {
+        assert_eq!(Solution::can_partition_recursive(nums), expected);
+    }
+
+    #[apply(test_cases)]
+    fn test_can_partition_dp(nums: Vec<i32>, expected: bool) {
+        assert_eq!(Solution::can_partition_dp(nums), expected);
+    }
 }

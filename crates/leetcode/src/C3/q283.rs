@@ -18,19 +18,14 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use rstest::rstest;
 
-    macro_rules! test {
-        ($input:expr,$expected:expr) => {
-            let mut nums = $input;
-            Solution::move_zeroes(&mut nums);
-            assert_eq!(nums, $expected);
-        };
-    }
-
-    #[test]
-    fn test_move_zeroes() {
-        test!(vec![0], vec![0]);
-        test!(vec![0, 0, 1], vec![1, 0, 0]);
-        test!(vec![0, 1, 0, 3, 12], vec![1, 3, 12, 0, 0]);
+    #[rstest]
+    #[case(&mut [0], &[0])]
+    #[case(&mut [0, 0, 1], &[1, 0, 0])]
+    #[case(&mut [0, 1, 0, 3, 12], &[1, 3, 12, 0, 0])]
+    fn test_move_zeroes(#[case] nums: &mut [i32], #[case] expected: &[i32]) {
+        Solution::move_zeroes(nums);
+        assert_eq!(nums, expected);
     }
 }

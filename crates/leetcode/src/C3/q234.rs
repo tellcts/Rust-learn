@@ -54,16 +54,15 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::{list_from_vec, test};
+    use crate::list_from_vec;
+    use rstest::rstest;
 
-    test!(
-        test_is_palindrome{
-            Solution::is_palindrome;
-
-            list_from_vec(vec![1, 2]) => false;
-            list_from_vec(vec![0, 0, 0]) => true;
-            list_from_vec(vec![1, 2, 2, 1]) => true;
-            list_from_vec(vec![1, 2, 3, 4, 3, 2, 1]) => true;
-        }
-    );
+    #[rstest]
+    #[case(list_from_vec(vec![1, 2]), false)]
+    #[case(list_from_vec(vec![0, 0, 0]), true)]
+    #[case(list_from_vec(vec![1, 2, 2, 1]), true)]
+    #[case(list_from_vec(vec![1, 2, 3, 4, 3, 2, 1]), true)]
+    fn test_is_palindrome(#[case] head: Option<Box<ListNode>>, #[case] expected: bool) {
+        assert_eq!(Solution::is_palindrome(head), expected);
+    }
 }

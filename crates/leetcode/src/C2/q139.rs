@@ -64,25 +64,27 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
+    use rstest_reuse::{apply, template};
 
-    test!(
-        test_word_break{
-            Solution::word_break_dp;
-            Solution::word_break_recursive;
+    fn convert(values: Vec<&str>) -> Vec<String> {
+        values.into_iter().map(String::from).collect()
+    }
 
-            "leetcode".to_string(), vec!["leet".to_string(), "code".to_string()] => true;
+    #[template]
+    #[rstest]
+    #[case(String::from("leetcode"), convert(vec!["leet","code"]), true)]
+    #[case(String::from("applepenapple"), convert(vec!["apple","pen"]), true)]
+    #[case(String::from("catsandog"), convert(vec!["cats","dog","sand","and","cat"]), false)]
+    fn test_cases(#[case] s: String, #[case] word_dict: Vec<String>, #[case] expected: bool) {}
 
-            "applepenapple".to_string(), vec!["apple".to_string(), "pen".to_string()] => true;
+    #[apply(test_cases)]
+    fn test_word_break_recursive(s: String, word_dict: Vec<String>, expected: bool) {
+        assert_eq!(Solution::word_break_recursive(s, word_dict), expected);
+    }
 
-            "catsandog".to_string(),
-            vec![
-                "cats".to_string(),
-                "dog".to_string(),
-                "sand".to_string(),
-                "and".to_string(),
-                "cat".to_string()
-            ] => false;
-        }
-    );
+    #[apply(test_cases)]
+    fn test_word_break_dp(s: String, word_dict: Vec<String>, expected: bool) {
+        assert_eq!(Solution::word_break_dp(s, word_dict), expected);
+    }
 }

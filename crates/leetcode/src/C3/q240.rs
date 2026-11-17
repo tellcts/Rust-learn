@@ -30,17 +30,16 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_search_matrix{
-            Solution::search_matrix;
-
-            vec![vec![1, 3, 5, 7], vec![10, 11, 16, 20], vec![23, 30, 34, 50]], 3
-            => true;
-
-            vec![vec![1, 3, 5, 7], vec![10, 11, 16, 20], vec![23, 30, 34, 50]], 13
-            => false;
-        }
-    );
+    #[rstest]
+    #[case(vec![vec![1, 3, 5, 7], vec![10, 11, 16, 20], vec![23, 30, 34, 50]], 3, true)]
+    #[case(vec![vec![1, 3, 5, 7], vec![10, 11, 16, 20], vec![23, 30, 34, 50]], 13, false)]
+    fn test_search_matrix(
+        #[case] matrix: Vec<Vec<i32>>,
+        #[case] target: i32,
+        #[case] expected: bool,
+    ) {
+        assert_eq!(Solution::search_matrix(matrix, target), expected);
+    }
 }

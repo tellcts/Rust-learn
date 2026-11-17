@@ -53,15 +53,13 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_min_window{
-            Solution::min_window;
-
-            "a", "a" => "a";
-            "a", "aa" => "";
-            "ADOBECODEBANC", "ABC" => "BANC";
-        }
-    );
+    #[rstest]
+    #[case("a", "a", "a")]
+    #[case("a", "aa", "")]
+    #[case("ADOBECODEBANC", "ABC", "BANC")]
+    fn test_min_window(#[case] s: &str, #[case] t: &str, #[case] expected: &str) {
+        assert_eq!(Solution::min_window(s, t), expected);
+    }
 }

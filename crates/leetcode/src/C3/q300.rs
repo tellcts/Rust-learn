@@ -57,16 +57,24 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
+    use rstest_reuse::{apply, template};
 
-    test!(
-        test_length_of_lis{
-            Solution::length_of_lis_dp;
+    #[template]
+    #[rstest]
+    #[case(vec![0, 1, 0, 3, 2, 3], 4)]
+    #[case(vec![4, 10, 4, 3, 8, 9], 3)]
+    #[case(vec![7, 7, 7, 7, 7, 7, 7], 1)]
+    #[case(vec![10, 9, 2, 5, 3, 7, 101, 18], 4)]
+    fn test_cases(#[case] nums: Vec<i32>, #[case] expected: i32) {}
 
-            vec![0, 1, 0, 3, 2, 3] => 4;
-            vec![4, 10, 4, 3, 8, 9] => 3;
-            vec![7, 7, 7, 7, 7, 7, 7] => 1;
-            vec![10, 9, 2, 5, 3, 7, 101, 18] => 4;
-        }
-    );
+    #[apply(test_cases)]
+    fn test_length_of_lis_recursive(nums: Vec<i32>, expected: i32) {
+        assert_eq!(Solution::length_of_lis_recursive(nums), expected);
+    }
+
+    #[apply(test_cases)]
+    fn test_length_of_lis_dp(nums: Vec<i32>, expected: i32) {
+        assert_eq!(Solution::length_of_lis_dp(nums), expected);
+    }
 }

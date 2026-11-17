@@ -32,14 +32,12 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_max_sliding_window{
-            Solution::max_sliding_window;
-
-            vec![1], 1 => vec![1];
-            vec![1, 3, -1, -3, 5, 3, 6, 7], 3 => vec![3, 3, 5, 5, 6, 7];
-        }
-    );
+    #[rstest]
+    #[case(vec![1], 1, vec![1])]
+    #[case(vec![1, 3, -1, -3, 5, 3, 6, 7], 3, vec![3, 3, 5, 5, 6, 7])]
+    fn test_max_sliding_window(#[case] nums: Vec<i32>, #[case] k: i32, #[case] expected: Vec<i32>) {
+        assert_eq!(Solution::max_sliding_window(nums, k), expected);
+    }
 }

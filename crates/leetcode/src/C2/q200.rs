@@ -35,17 +35,18 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_num_islands{
-            Solution::num_islands;
-
-            vec![
-                vec!['1', '1', '1', '1', '0'],
-                vec!['1', '1', '0', '1', '0'],
-                vec!['1', '1', '0', '0', '0'],
-                vec!['0', '0', '1', '0', '1']] => 3
-        }
-    );
+    #[rstest]
+    #[case(
+        vec![vec!['1', '1', '1', '1', '0']
+            ,vec!['1', '1', '0', '1', '0']
+            ,vec!['1', '1', '0', '0', '0']
+            ,vec!['0', '0', '1', '0', '1']]
+            ,
+            3
+    )]
+    fn test_num_islands(#[case] grid: Vec<Vec<char>>, #[case] expected: i32) {
+        assert_eq!(Solution::num_islands(grid), expected);
+    }
 }

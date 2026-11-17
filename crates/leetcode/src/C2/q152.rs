@@ -43,15 +43,22 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
+    use rstest_reuse::{apply, template};
 
-    test!(
-        test_max_product{
-            Solution::max_product_dp;
-            Solution::max_product_optimize;
+    #[template]
+    #[rstest]
+    #[case(vec![-2,0,-1], 0)]
+    #[case(vec![2,3,-2,4], 6)]
+    fn test_cases(#[case] nums: Vec<i32>, #[case] expected: i32) {}
 
-            vec![-2, 0, -1] => 0;
-            vec![2, 3, -2, 4] => 6;
-        }
-    );
+    #[apply(test_cases)]
+    fn test_max_product_dp(nums: Vec<i32>, expected: i32) {
+        assert_eq!(Solution::max_product_dp(nums), expected);
+    }
+
+    #[apply(test_cases)]
+    fn test_max_product_optimize(nums: Vec<i32>, expected: i32) {
+        assert_eq!(Solution::max_product_optimize(nums), expected);
+    }
 }

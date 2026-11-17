@@ -22,14 +22,12 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test;
+    use rstest::rstest;
 
-    test!(
-        test_subarray_sum{
-            Solution::subarray_sum;
-
-            vec![1, 1, 1], 2 => 2;
-            vec![1, 2, 3], 3 => 2;
-        }
-    );
+    #[rstest]
+    #[case(vec![1, 1, 1], 2, 2)]
+    #[case(vec![1, 2, 3], 3, 2)]
+    fn test_subarray_sum(#[case] nums: Vec<i32>, #[case] k: i32, #[case] expected: i32) {
+        assert_eq!(Solution::subarray_sum(nums, k), expected);
+    }
 }
