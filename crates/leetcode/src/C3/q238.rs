@@ -31,7 +31,7 @@ mod tests {
     #[case(vec![1, 2], vec![2, 1])]
     #[case(vec![1, 2, 3, 4], vec![24, 12, 8, 6])]
     #[case(vec![6, 1, 2, 3, 0, 5], vec![0, 0, 0, 0, 180, 0])]
-    fn test_product_except_self(#[case] nums: Vec<i32>, #[case] expected: Vec<i32>) {
-        assert_eq!(Solution::product_except_self(nums), expected);
+    fn test_product_except_self(#[case] nums: Vec<i32>, #[case] expect: Vec<i32>) {
+        assert_eq!(Solution::product_except_self(nums), expect);
     }
 }

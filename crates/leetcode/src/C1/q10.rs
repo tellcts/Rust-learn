@@ -73,15 +73,15 @@ mod tests {
     #[case("ab", ".*", true)]
     #[case("aab", "c*a*b", true)]
     #[case("mississippi", "mis*is*p*.", false)]
-    fn test_cases(#[case] s: &str, #[case] p: &str, #[case] expected: bool) {}
+    fn test_cases(#[case] s: &str, #[case] p: &str, #[case] expect: bool) {}
 
     #[apply(test_cases)]
-    fn test_is_match_recursive(s: &str, p: &str, expected: bool) {
-        assert_eq!(Solution::is_match_recursive(s, p), expected);
+    fn test_is_match_recursive(s: &str, p: &str, expect: bool) {
+        assert_eq!(Solution::is_match_recursive(s, p), expect);
     }
 
     #[apply(test_cases)]
-    fn test_is_match_iterative(s: &str, p: &str, expected: bool) {
-        assert_eq!(Solution::is_match_iterative(s, p), expected);
+    fn test_is_match_iterative(s: &str, p: &str, expect: bool) {
+        assert_eq!(Solution::is_match_iterative(s, p), expect);
     }
 }

@@ -37,7 +37,7 @@ mod tests {
     #[rstest]
     #[case(vec![1], 1, vec![1])]
     #[case(vec![1, 3, -1, -3, 5, 3, 6, 7], 3, vec![3, 3, 5, 5, 6, 7])]
-    fn test_max_sliding_window(#[case] nums: Vec<i32>, #[case] k: i32, #[case] expected: Vec<i32>) {
-        assert_eq!(Solution::max_sliding_window(nums, k), expected);
+    fn test_max_sliding_window(#[case] nums: Vec<i32>, #[case] k: i32, #[case] expect: Vec<i32>) {
+        assert_eq!(Solution::max_sliding_window(nums, k), expect);
     }
 }

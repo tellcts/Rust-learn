@@ -66,8 +66,8 @@ mod tests {
     fn test_reverse_k_group(
         #[case] head: Option<Box<ListNode>>,
         #[case] k: usize,
-        #[case] expected: Option<Box<ListNode>>,
+        #[case] expect: Option<Box<ListNode>>,
     ) {
-        assert_eq!(Solution::reverse_k_group(head, k), expected);
+        assert_eq!(Solution::reverse_k_group(head, k), expect);
     }
 }

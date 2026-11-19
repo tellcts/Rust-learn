@@ -31,7 +31,7 @@ mod tests {
                   vec![1, 3, 3, 1],
                   vec![1, 4, 6, 4, 1]]
     )]
-    fn test_generate(#[case] num_rows: i32, #[case] expected: Vec<Vec<i32>>) {
-        assert_eq!(Solution::generate(num_rows), expected);
+    fn test_generate(#[case] num_rows: i32, #[case] expect: Vec<Vec<i32>>) {
+        assert_eq!(Solution::generate(num_rows), expect);
     }
 }

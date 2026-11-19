@@ -45,7 +45,7 @@ mod tests {
     #[rstest]
     #[case(String::from("2"),vec!["a","b","c"])]
     #[case(String::from("23"),vec!["ad","ae","af","bd","be","bf","cd","ce","cf"])]
-    fn test_letter_combinations(#[case] digits: String, #[case] expected: Vec<&str>) {
-        assert_eq!(Solution::letter_combinations(digits), expected);
+    fn test_letter_combinations(#[case] digits: String, #[case] expect: Vec<&str>) {
+        assert_eq!(Solution::letter_combinations(digits), expect);
     }
 }

@@ -38,8 +38,8 @@ mod tests {
     fn test_search_matrix(
         #[case] matrix: Vec<Vec<i32>>,
         #[case] target: i32,
-        #[case] expected: bool,
+        #[case] expect: bool,
     ) {
-        assert_eq!(Solution::search_matrix(matrix, target), expected);
+        assert_eq!(Solution::search_matrix(matrix, target), expect);
     }
 }

@@ -327,15 +327,15 @@ mod tests {
         list.delete_ith(2);
         list.insert_at_ith(2, third_value);
 
-        for (i, expected) in [
+        for (i, expect) in [
             (0, first_value),
             (1, second_value),
             (2, third_value),
             (3, fourth_value),
         ] {
             match list.get(i) {
-                Some(val) => assert_eq!(*val, expected),
-                None => panic!("Expected to find {expected} at index {i}"),
+                Some(val) => assert_eq!(*val, expect),
+                None => panic!("Expected to find {expect} at index {i}"),
             }
         }
     }

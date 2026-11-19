@@ -54,9 +54,9 @@ mod tests {
              ,vec![0, 4, 5, 0]
              ,vec![0, 3, 1, 0]]
     )]
-    fn test_set_zeroes(#[case] matrix: &mut [Vec<i32>], #[case] expected: &[Vec<i32>]){
+    fn test_set_zeroes(#[case] matrix: &mut [Vec<i32>], #[case] expect: &[Vec<i32>]){
         Solution::set_zeroes(matrix);
-        assert_eq!(matrix,expected);
+        assert_eq!(matrix,expect);
     }
 
 }

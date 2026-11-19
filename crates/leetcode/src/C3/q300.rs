@@ -66,15 +66,15 @@ mod tests {
     #[case(vec![4, 10, 4, 3, 8, 9], 3)]
     #[case(vec![7, 7, 7, 7, 7, 7, 7], 1)]
     #[case(vec![10, 9, 2, 5, 3, 7, 101, 18], 4)]
-    fn test_cases(#[case] nums: Vec<i32>, #[case] expected: i32) {}
+    fn test_cases(#[case] nums: Vec<i32>, #[case] expect: i32) {}
 
     #[apply(test_cases)]
-    fn test_length_of_lis_recursive(nums: Vec<i32>, expected: i32) {
-        assert_eq!(Solution::length_of_lis_recursive(nums), expected);
+    fn test_length_of_lis_recursive(nums: Vec<i32>, expect: i32) {
+        assert_eq!(Solution::length_of_lis_recursive(nums), expect);
     }
 
     #[apply(test_cases)]
-    fn test_length_of_lis_dp(nums: Vec<i32>, expected: i32) {
-        assert_eq!(Solution::length_of_lis_dp(nums), expected);
+    fn test_length_of_lis_dp(nums: Vec<i32>, expect: i32) {
+        assert_eq!(Solution::length_of_lis_dp(nums), expect);
     }
 }

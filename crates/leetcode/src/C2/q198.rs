@@ -35,15 +35,15 @@ mod tests {
     #[rstest]
     #[case(vec![1,2,3,1], 4)]
     #[case(vec![2,7,9,3,1], 12)]
-    fn test_cases(#[case] nums: Vec<i32>, #[case] expected: i32) {}
+    fn test_cases(#[case] nums: Vec<i32>, #[case] expect: i32) {}
 
     #[apply(test_cases)]
-    fn test_rob_dp(nums: Vec<i32>, expected: i32) {
-        assert_eq!(Solution::rob_dp(nums), expected);
+    fn test_rob_dp(nums: Vec<i32>, expect: i32) {
+        assert_eq!(Solution::rob_dp(nums), expect);
     }
 
     #[apply(test_cases)]
-    fn test_rob_iterative(nums: Vec<i32>, expected: i32) {
-        assert_eq!(Solution::rob_iterative(nums), expected);
+    fn test_rob_iterative(nums: Vec<i32>, expect: i32) {
+        assert_eq!(Solution::rob_iterative(nums), expect);
     }
 }

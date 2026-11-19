@@ -42,7 +42,7 @@ mod tests {
     #[case(vec![], 0, vec![-1,-1])]
     #[case(vec![5,7,7,8,8,10], 8, vec![3,4])]
     #[case(vec![5,7,7,8,8,10], 6, vec![-1,-1])]
-    fn test_search_range(#[case] nums: Vec<i32>, #[case] target: i32, #[case] expected: Vec<i32>) {
-        assert_eq!(Solution::search_range(nums, target), expected);
+    fn test_search_range(#[case] nums: Vec<i32>, #[case] target: i32, #[case] expect: Vec<i32>) {
+        assert_eq!(Solution::search_range(nums, target), expect);
     }
 }

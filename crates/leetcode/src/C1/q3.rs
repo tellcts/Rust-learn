@@ -33,7 +33,7 @@ mod tests {
     #[case("bbbbb", 1)]
     #[case("pwwkew", 3)]
     #[case("abcabcbb", 3)]
-    fn test_length_of_longest_substring(#[case] s: &str, #[case] expected: usize) {
-        assert_eq!(Solution::length_of_longest_substring(s), expected);
+    fn test_length_of_longest_substring(#[case] s: &str, #[case] expect: usize) {
+        assert_eq!(Solution::length_of_longest_substring(s), expect);
     }
 }

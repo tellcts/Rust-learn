@@ -50,15 +50,15 @@ mod tests {
     #[rstest]
     #[case(vec![-2,0,-1], 0)]
     #[case(vec![2,3,-2,4], 6)]
-    fn test_cases(#[case] nums: Vec<i32>, #[case] expected: i32) {}
+    fn test_cases(#[case] nums: Vec<i32>, #[case] expect: i32) {}
 
     #[apply(test_cases)]
-    fn test_max_product_dp(nums: Vec<i32>, expected: i32) {
-        assert_eq!(Solution::max_product_dp(nums), expected);
+    fn test_max_product_dp(nums: Vec<i32>, expect: i32) {
+        assert_eq!(Solution::max_product_dp(nums), expect);
     }
 
     #[apply(test_cases)]
-    fn test_max_product_optimize(nums: Vec<i32>, expected: i32) {
-        assert_eq!(Solution::max_product_optimize(nums), expected);
+    fn test_max_product_optimize(nums: Vec<i32>, expect: i32) {
+        assert_eq!(Solution::max_product_optimize(nums), expect);
     }
 }

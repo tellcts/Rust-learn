@@ -34,7 +34,7 @@ mod tests {
     #[case(&[1,3,5,6], 5, 2)]
     #[case(&[1,3,5,6], 2, 1)]
     #[case(&[1,3,5,6], 7, 4)]
-    fn test_search_insert(#[case] nums: &[i32], #[case] target: i32, #[case] expected: usize) {
-        assert_eq!(Solution::search_insert(nums, target), expected);
+    fn test_search_insert(#[case] nums: &[i32], #[case] target: i32, #[case] expect: usize) {
+        assert_eq!(Solution::search_insert(nums, target), expect);
     }
 }

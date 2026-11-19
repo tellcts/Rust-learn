@@ -41,8 +41,8 @@ mod tests {
     fn test_remove_nth_from_end(
         #[case] head: Option<Box<ListNode>>,
         #[case] n: i32,
-        #[case] expected: Option<Box<ListNode>>,
+        #[case] expect: Option<Box<ListNode>>,
     ) {
-        assert_eq!(Solution::remove_nth_from_end(head, n), expected);
+        assert_eq!(Solution::remove_nth_from_end(head, n), expect);
     }
 }

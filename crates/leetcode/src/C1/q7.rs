@@ -34,7 +34,7 @@ mod tests {
     #[case(120, 21)]
     #[case(123, 321)]
     #[case(-123,-321)]
-    fn test_reverse(#[case] x: i32, #[case] expected: i32) {
-        assert_eq!(Solution::reverse(x), expected);
+    fn test_reverse(#[case] x: i32, #[case] expect: i32) {
+        assert_eq!(Solution::reverse(x), expect);
     }
 }

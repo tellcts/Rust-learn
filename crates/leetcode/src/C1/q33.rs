@@ -54,7 +54,7 @@ mod tests {
     #[case(vec![1], 0, -1)]
     #[case(vec![4,5,6,7,0,1,2], 0, 4)]
     #[case(vec![4,5,6,7,0,1,2], 3, -1)]
-    fn test_search(#[case] nums: Vec<i32>, #[case] target: i32, #[case] expected: i32) {
-        assert_eq!(Solution::search(nums, target), expected);
+    fn test_search(#[case] nums: Vec<i32>, #[case] target: i32, #[case] expect: i32) {
+        assert_eq!(Solution::search(nums, target), expect);
     }
 }

@@ -59,7 +59,7 @@ mod tests {
     #[case("a", "a", "a")]
     #[case("a", "aa", "")]
     #[case("ADOBECODEBANC", "ABC", "BANC")]
-    fn test_min_window(#[case] s: &str, #[case] t: &str, #[case] expected: &str) {
-        assert_eq!(Solution::min_window(s, t), expected);
+    fn test_min_window(#[case] s: &str, #[case] t: &str, #[case] expect: &str) {
+        assert_eq!(Solution::min_window(s, t), expect);
     }
 }

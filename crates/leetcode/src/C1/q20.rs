@@ -38,7 +38,7 @@ mod tests {
     #[case(String::from("()"), true)]
     #[case(String::from("()[]{}"), true)]
     #[case(String::from("){}[]"), false)]
-    fn test_is_valid(#[case] s: String, #[case] expected: bool) {
-        assert_eq!(Solution::is_valid(s), expected);
+    fn test_is_valid(#[case] s: String, #[case] expect: bool) {
+        assert_eq!(Solution::is_valid(s), expect);
     }
 }

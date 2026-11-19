@@ -61,7 +61,7 @@ mod tests {
          ,vec![b'.',b'.',b'.',b'.',b'8',b'.',b'.',b'7',b'9']]
          ,false
     )]
-    fn test_is_valid_sudoku(#[case] board: &[Vec<u8>], #[case] expected: bool) {
-        assert_eq!(Solution::is_valid_sudoku(board), expected);
+    fn test_is_valid_sudoku(#[case] board: &[Vec<u8>], #[case] expect: bool) {
+        assert_eq!(Solution::is_valid_sudoku(board), expect);
     }
 }

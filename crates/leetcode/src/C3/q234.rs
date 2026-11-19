@@ -62,7 +62,7 @@ mod tests {
     #[case(list_from_vec(vec![0, 0, 0]), true)]
     #[case(list_from_vec(vec![1, 2, 2, 1]), true)]
     #[case(list_from_vec(vec![1, 2, 3, 4, 3, 2, 1]), true)]
-    fn test_is_palindrome(#[case] head: Option<Box<ListNode>>, #[case] expected: bool) {
-        assert_eq!(Solution::is_palindrome(head), expected);
+    fn test_is_palindrome(#[case] head: Option<Box<ListNode>>, #[case] expect: bool) {
+        assert_eq!(Solution::is_palindrome(head), expect);
     }
 }

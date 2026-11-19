@@ -65,15 +65,15 @@ mod tests {
     #[rstest]
     #[case(vec![1, 2, 3, 5], false)]
     #[case(vec![1, 5, 11, 5], true)]
-    fn test_cases(#[case] nums: Vec<i32>, #[case] expected: bool) {}
+    fn test_cases(#[case] nums: Vec<i32>, #[case] expect: bool) {}
 
     #[apply(test_cases)]
-    fn test_can_partition_recursive(nums: Vec<i32>, expected: bool) {
-        assert_eq!(Solution::can_partition_recursive(nums), expected);
+    fn test_can_partition_recursive(nums: Vec<i32>, expect: bool) {
+        assert_eq!(Solution::can_partition_recursive(nums), expect);
     }
 
     #[apply(test_cases)]
-    fn test_can_partition_dp(nums: Vec<i32>, expected: bool) {
-        assert_eq!(Solution::can_partition_dp(nums), expected);
+    fn test_can_partition_dp(nums: Vec<i32>, expect: bool) {
+        assert_eq!(Solution::can_partition_dp(nums), expect);
     }
 }

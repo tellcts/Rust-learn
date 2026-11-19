@@ -40,7 +40,7 @@ mod tests {
     #[rstest]
     #[case(String::from("abab"), String::from("ab"), vec![0, 1, 2])]
     #[case(String::from("cbaebabacd"), String::from("abc"), vec![0, 6])]
-    fn test_find_anagrams(#[case] s: String, #[case] p: String, #[case] expected: Vec<i32>) {
-        assert_eq!(Solution::find_anagrams(s, p), expected);
+    fn test_find_anagrams(#[case] s: String, #[case] p: String, #[case] expect: Vec<i32>) {
+        assert_eq!(Solution::find_anagrams(s, p), expect);
     }
 }

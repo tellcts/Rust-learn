@@ -33,7 +33,7 @@ mod tests {
     #[case(vec![""],String::from(""))]
     #[case(vec!["dog","racecar","car"],String::from(""))]
     #[case(vec!["flower", "flow", "flight"],String::from("fl"))]
-    fn test_longest_common_prefix(#[case] strs: Vec<&str>, #[case] expected: String) {
-        assert_eq!(Solution::longest_common_prefix(strs), expected);
+    fn test_longest_common_prefix(#[case] strs: Vec<&str>, #[case] expect: String) {
+        assert_eq!(Solution::longest_common_prefix(strs), expect);
     }
 }

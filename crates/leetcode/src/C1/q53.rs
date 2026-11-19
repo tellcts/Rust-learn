@@ -25,7 +25,7 @@ mod tests {
     #[case(vec![1, 2, -1], 3)]
     #[case(vec![5, 4, -1, 7, 8], 23)]
     #[case(vec![-2, 1, -3, 4, -1, 2, 1, -5, 4], 6)]
-    fn test_max_sub_array_greedy(#[case] nums: Vec<i32>, #[case] expected: i32) {
-        assert_eq!(Solution::max_sub_array_greedy(nums), expected);
+    fn test_max_sub_array_greedy(#[case] nums: Vec<i32>, #[case] expect: i32) {
+        assert_eq!(Solution::max_sub_array_greedy(nums), expect);
     }
 }

@@ -41,8 +41,8 @@ mod tests {
            list_from_vec(vec![1,1,2,3,4,4,5,6]))]
     fn test_merge_k_lists(
         #[case] lists: Vec<Option<Box<ListNode>>>,
-        #[case] expected: Option<Box<ListNode>>,
+        #[case] expect: Option<Box<ListNode>>,
     ) {
-        assert_eq!(Solution::merge_k_lists(lists), expected);
+        assert_eq!(Solution::merge_k_lists(lists), expect);
     }
 }

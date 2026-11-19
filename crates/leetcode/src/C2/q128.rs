@@ -31,7 +31,7 @@ mod tests {
     #[case(vec![0], 1)]
     #[case(vec![100, 4, 200, 1, 3, 2], 4)]
     #[case(vec![0, 3, 7, 2, 5, 8, 4, 6, 0, 1], 9)]
-    fn test_longest_consecutive(#[case] nums: Vec<i32>, #[case] expected: i32) {
-        assert_eq!(Solution::longest_consecutive(nums), expected);
+    fn test_longest_consecutive(#[case] nums: Vec<i32>, #[case] expect: i32) {
+        assert_eq!(Solution::longest_consecutive(nums), expect);
     }
 }

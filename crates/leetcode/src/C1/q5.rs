@@ -46,10 +46,10 @@ mod tests {
     #[case("cbbd", "bb")]
     #[case("babad", "bab")]
     #[case("qwetzcanaczt", "tzcanaczt")]
-    fn test_cases(#[case] s: &str, #[case] expected: &str) {}
+    fn test_cases(#[case] s: &str, #[case] expect: &str) {}
 
     #[apply(test_cases)]
-    fn test_longest_palindrome_1(s: &str, expected: &str) {
-        assert_eq!(Solution::longest_palindrome_1(s), expected);
+    fn test_longest_palindrome_1(s: &str, expect: &str) {
+        assert_eq!(Solution::longest_palindrome_1(s), expect);
     }
 }

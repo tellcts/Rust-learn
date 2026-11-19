@@ -47,8 +47,8 @@ mod tests {
     fn test_combination_sum(
         #[case] candidates: &[i32],
         #[case] target: i32,
-        #[case] expected: Vec<Vec<i32>>,
+        #[case] expect: Vec<Vec<i32>>,
     ) {
-        assert_eq!(Solution::combination_sum(candidates, target), expected);
+        assert_eq!(Solution::combination_sum(candidates, target), expect);
     }
 }

@@ -107,7 +107,7 @@ mod tests {
     #[rstest]
     #[case(vec![2,2,2,2,2], 8, vec![vec![2,2,2,2]])]
     #[case(vec![1,0,-1,0,-2,2], 0, vec![vec![-2,-1,1,2],vec![-2,0,0,2],vec![-1,0,0,1]])]
-    fn test_four_sum(#[case] nums: Vec<i32>, #[case] target: i32, #[case] expected: Vec<Vec<i32>>) {
-        assert_eq!(Solution::four_sum(nums, target), expected);
+    fn test_four_sum(#[case] nums: Vec<i32>, #[case] target: i32, #[case] expect: Vec<Vec<i32>>) {
+        assert_eq!(Solution::four_sum(nums, target), expect);
     }
 }

@@ -43,8 +43,8 @@ mod tests {
              ,vec![12, 6, 8, 9]
              ,vec![16, 7, 10, 11]]
     )]
-    fn test_rotate(#[case] matrix: &mut [Vec<i32>], #[case] expected: &[Vec<i32>]) {
+    fn test_rotate(#[case] matrix: &mut [Vec<i32>], #[case] expect: &[Vec<i32>]) {
         Solution::rotate(matrix);
-        assert_eq!(matrix, expected);
+        assert_eq!(matrix, expect);
     }
 }

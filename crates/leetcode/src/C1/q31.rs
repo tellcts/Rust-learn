@@ -58,17 +58,17 @@ mod tests {
     #[case(&mut [1, 2, 3], &mut [1, 3, 2])]
     #[case(&mut [3, 2, 1], &mut [1, 2, 3])]
     #[case(&mut [1, 1, 5], &mut [1, 5, 1])]
-    fn test_next_permutation(#[case] nums: &mut [i32], #[case] expected: &mut [i32]) {
+    fn test_next_permutation(#[case] nums: &mut [i32], #[case] expect: &mut [i32]) {
         Solution::next_permutation(nums);
-        assert_eq!(nums, expected);
+        assert_eq!(nums, expect);
     }
 
     #[rstest]
     #[case(&mut [1, 2, 3], &mut [3, 2, 1])]
     #[case(&mut [3, 2, 1], &mut [3, 1, 2])]
     #[case(&mut [1, 5, 1], &mut [1, 1, 5])]
-    fn test_pre_permutation(#[case] nums: &mut [i32], #[case] expected: &mut [i32]) {
+    fn test_pre_permutation(#[case] nums: &mut [i32], #[case] expect: &mut [i32]) {
         Solution::pre_permutation(nums);
-        assert_eq!(nums, expected);
+        assert_eq!(nums, expect);
     }
 }

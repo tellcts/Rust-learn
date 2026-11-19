@@ -39,15 +39,15 @@ mod tests {
     #[rstest]
     #[case(2, 2)]
     #[case(3, 3)]
-    fn test_cases(#[case] n: i32, #[case] expected: i32) {}
+    fn test_cases(#[case] n: i32, #[case] expect: i32) {}
 
     #[apply(test_cases)]
-    fn test_climb_stairs_dp(n: i32, expected: i32) {
-        assert_eq!(Solution::climb_stairs_dp(n), expected);
+    fn test_climb_stairs_dp(n: i32, expect: i32) {
+        assert_eq!(Solution::climb_stairs_dp(n), expect);
     }
 
     #[apply(test_cases)]
-    fn test_climb_stairs_optimize(n: i32, expected: i32) {
-        assert_eq!(Solution::climb_stairs_optimize(n), expected);
+    fn test_climb_stairs_optimize(n: i32, expect: i32) {
+        assert_eq!(Solution::climb_stairs_optimize(n), expect);
     }
 }

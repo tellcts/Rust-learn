@@ -114,29 +114,29 @@ mod tests {
     #[case(vec![1, 3], vec![2], 2.0)]
     #[case(vec![1, 2], vec![3, 4], 2.5)]
     #[case(vec![1, 1], vec![1, 1], 1.0)]
-    fn test_cases(#[case] nums1: Vec<i32>, #[case] nums2: Vec<i32>, #[case] expected: f64) {}
+    fn test_cases(#[case] nums1: Vec<i32>, #[case] nums2: Vec<i32>, #[case] expect: f64) {}
 
     #[apply(test_cases)]
-    fn test_find_median_sorted_arrays_1(nums1: Vec<i32>, nums2: Vec<i32>, expected: f64) {
+    fn test_find_median_sorted_arrays_1(nums1: Vec<i32>, nums2: Vec<i32>, expect: f64) {
         assert_eq!(
             Solution::find_median_sorted_arrays_1(nums1, nums2),
-            expected
+            expect
         );
     }
 
     #[apply(test_cases)]
-    fn test_find_median_sorted_arrays_2(nums1: Vec<i32>, nums2: Vec<i32>, expected: f64) {
+    fn test_find_median_sorted_arrays_2(nums1: Vec<i32>, nums2: Vec<i32>, expect: f64) {
         assert_eq!(
             Solution::find_median_sorted_arrays_2(nums1, nums2),
-            expected
+            expect
         );
     }
 
     #[apply(test_cases)]
-    fn test_find_median_sorted_arrays_3(nums1: Vec<i32>, nums2: Vec<i32>, expected: f64) {
+    fn test_find_median_sorted_arrays_3(nums1: Vec<i32>, nums2: Vec<i32>, expect: f64) {
         assert_eq!(
             Solution::find_median_sorted_arrays_3(nums1, nums2),
-            expected
+            expect
         );
     }
 }

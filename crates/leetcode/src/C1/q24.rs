@@ -40,10 +40,7 @@ mod tests {
     #[case(list_from_vec(vec![1]),list_from_vec(vec![1]))]
     #[case(list_from_vec(vec![1,2,3,4]),list_from_vec(vec![2,1,4,3]))]
     #[case(list_from_vec(vec![1,2,3,4,5]),list_from_vec(vec![2,1,4,3,5]))]
-    fn test_swap_pairs(
-        #[case] head: Option<Box<ListNode>>,
-        #[case] expected: Option<Box<ListNode>>,
-    ) {
-        assert_eq!(Solution::swap_pairs(head), expected);
+    fn test_swap_pairs(#[case] head: Option<Box<ListNode>>, #[case] expect: Option<Box<ListNode>>) {
+        assert_eq!(Solution::swap_pairs(head), expect);
     }
 }

@@ -90,20 +90,20 @@ mod tests {
     #[case(String::from(""), 0)]
     #[case(String::from("())"), 2)]
     #[case(String::from(")()())"), 4)]
-    fn test_cases(#[case] s: String, #[case] expected: usize) {}
+    fn test_cases(#[case] s: String, #[case] expect: usize) {}
 
     #[apply(test_cases)]
-    fn test_longest_valid_parenthesis_1(s: String, expected: usize) {
-        assert_eq!(Solution::longest_valid_parenthesis_1(s), expected);
+    fn test_longest_valid_parenthesis_1(s: String, expect: usize) {
+        assert_eq!(Solution::longest_valid_parenthesis_1(s), expect);
     }
 
     #[apply(test_cases)]
-    fn test_longest_valid_parenthesis_2(s: String, expected: usize) {
-        assert_eq!(Solution::longest_valid_parenthesis_2(s), expected);
+    fn test_longest_valid_parenthesis_2(s: String, expect: usize) {
+        assert_eq!(Solution::longest_valid_parenthesis_2(s), expect);
     }
 
     #[apply(test_cases)]
-    fn test_longest_valid_parenthesis_3(s: String, expected: usize) {
-        assert_eq!(Solution::longest_valid_parenthesis_3(s), expected);
+    fn test_longest_valid_parenthesis_3(s: String, expect: usize) {
+        assert_eq!(Solution::longest_valid_parenthesis_3(s), expect);
     }
 }

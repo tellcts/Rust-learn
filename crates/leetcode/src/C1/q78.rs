@@ -40,7 +40,7 @@ mod tests {
     #[rstest]
     #[case(vec![0], vec![vec![],vec![0]])]
     #[case(vec![1,2,3], vec![vec![],vec![3],vec![2],vec![2,3],vec![1],vec![1,3],vec![1,2],vec![1,2,3]])]
-    fn test_subsets(#[case] nums: Vec<i32>, #[case] expected: Vec<Vec<i32>>) {
-        assert_eq!(Solution::subsets(nums), expected);
+    fn test_subsets(#[case] nums: Vec<i32>, #[case] expect: Vec<Vec<i32>>) {
+        assert_eq!(Solution::subsets(nums), expect);
     }
 }

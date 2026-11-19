@@ -122,8 +122,8 @@ mod tests {
              ,vec![b'2', b'8', b'7', b'4', b'1', b'9', b'6', b'3', b'5']
              ,vec![b'3', b'4', b'5', b'2', b'8', b'6', b'1', b'7', b'9']]
     )]
-    fn test_solve_sudoku(#[case] board: &mut [Vec<u8>], #[case] expected: &[Vec<u8>]) {
+    fn test_solve_sudoku(#[case] board: &mut [Vec<u8>], #[case] expect: &[Vec<u8>]) {
         Solution::solve_sudoku(board);
-        assert_eq!(board, expected);
+        assert_eq!(board, expect);
     }
 }

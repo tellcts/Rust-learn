@@ -76,15 +76,15 @@ mod tests {
     #[case(String::from("leetcode"), convert(vec!["leet","code"]), true)]
     #[case(String::from("applepenapple"), convert(vec!["apple","pen"]), true)]
     #[case(String::from("catsandog"), convert(vec!["cats","dog","sand","and","cat"]), false)]
-    fn test_cases(#[case] s: String, #[case] word_dict: Vec<String>, #[case] expected: bool) {}
+    fn test_cases(#[case] s: String, #[case] word_dict: Vec<String>, #[case] expect: bool) {}
 
     #[apply(test_cases)]
-    fn test_word_break_recursive(s: String, word_dict: Vec<String>, expected: bool) {
-        assert_eq!(Solution::word_break_recursive(s, word_dict), expected);
+    fn test_word_break_recursive(s: String, word_dict: Vec<String>, expect: bool) {
+        assert_eq!(Solution::word_break_recursive(s, word_dict), expect);
     }
 
     #[apply(test_cases)]
-    fn test_word_break_dp(s: String, word_dict: Vec<String>, expected: bool) {
-        assert_eq!(Solution::word_break_dp(s, word_dict), expected);
+    fn test_word_break_dp(s: String, word_dict: Vec<String>, expect: bool) {
+        assert_eq!(Solution::word_break_dp(s, word_dict), expect);
     }
 }

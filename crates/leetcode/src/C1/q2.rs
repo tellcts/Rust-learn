@@ -83,21 +83,21 @@ mod tests {
     #[case(vec![2,4,3],vec![5,6,4],vec![7,0,8])]
     #[case(vec![0],vec![0],vec![0])]
     #[case(vec![9,9,9,9,9,9,9],vec![9,9,9,9],vec![8, 9, 9, 9, 0, 0, 0, 1])]
-    fn test_cases(#[case] l1: Vec<i32>, #[case] l2: Vec<i32>, #[case] expected: Vec<i32>) {}
+    fn test_cases(#[case] l1: Vec<i32>, #[case] l2: Vec<i32>, #[case] expect: Vec<i32>) {}
 
     #[apply(test_cases)]
-    fn test_add_two_numbers_iterative(l1: Vec<i32>, l2: Vec<i32>, expected: Vec<i32>) {
+    fn test_add_two_numbers_iterative(l1: Vec<i32>, l2: Vec<i32>, expect: Vec<i32>) {
         assert_eq!(
             Solution::add_two_numbers_iterative(list_from_vec(l1), list_from_vec(l2)),
-            list_from_vec(expected)
+            list_from_vec(expect)
         );
     }
 
     #[apply(test_cases)]
-    fn test_add_two_numbers_recursive(l1: Vec<i32>, l2: Vec<i32>, expected: Vec<i32>) {
+    fn test_add_two_numbers_recursive(l1: Vec<i32>, l2: Vec<i32>, expect: Vec<i32>) {
         assert_eq!(
             Solution::add_two_numbers_recursive(list_from_vec(l1), list_from_vec(l2)),
-            list_from_vec(expected)
+            list_from_vec(expect)
         );
     }
 }

@@ -22,7 +22,7 @@ mod tests {
     #[case(String::from("A"), 1, String::from("A"))]
     #[case(String::from("PAYPALISHIRING"), 3, String::from("PAHNAPLSIIGYIR"))]
     #[case(String::from("PAYPALISHIRING"), 4, String::from("PINALSIGYAHRPI"))]
-    fn test_convert(#[case] s: String, #[case] num_rows: usize, #[case] expected: String) {
-        assert_eq!(Solution::convert(s, num_rows), expected);
+    fn test_convert(#[case] s: String, #[case] num_rows: usize, #[case] expect: String) {
+        assert_eq!(Solution::convert(s, num_rows), expect);
     }
 }

@@ -45,7 +45,7 @@ mod tests {
     #[case("IX", 9)]
     #[case("LVIII", 58)]
     #[case("MCMXCIV", 1994)]
-    fn test_roman_to_int(#[case] s: &str, #[case] expected: i32) {
-        assert_eq!(Solution::roman_to_int(s), expected);
+    fn test_roman_to_int(#[case] s: &str, #[case] expect: i32) {
+        assert_eq!(Solution::roman_to_int(s), expect);
     }
 }

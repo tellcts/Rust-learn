@@ -33,7 +33,7 @@ mod tests {
     #[case(9, String::from("IX"))]
     #[case(58, String::from("LVIII"))]
     #[case(1994, String::from("MCMXCIV"))]
-    fn test_int_to_roman(#[case] num: i32, #[case] expected: String) {
-        assert_eq!(Solution::int_to_roman(num), expected);
+    fn test_int_to_roman(#[case] num: i32, #[case] expect: String) {
+        assert_eq!(Solution::int_to_roman(num), expect);
     }
 }

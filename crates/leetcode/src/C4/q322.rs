@@ -50,15 +50,15 @@ mod tests {
     #[case(vec![1], 0, 0)]
     #[case(vec![2], 3, -1)]
     #[case(vec![1, 2, 5], 11, 3)]
-    fn test_cases(#[case] coins: Vec<i32>, #[case] amount: i32, #[case] expected: i32) {}
+    fn test_cases(#[case] coins: Vec<i32>, #[case] amount: i32, #[case] expect: i32) {}
 
     #[apply(test_cases)]
-    fn test_coins_change_dp(coins: Vec<i32>, amount: i32, expected: i32) {
-        assert_eq!(Solution::coin_change_dp(coins, amount), expected);
+    fn test_coins_change_dp(coins: Vec<i32>, amount: i32, expect: i32) {
+        assert_eq!(Solution::coin_change_dp(coins, amount), expect);
     }
 
     #[apply(test_cases)]
-    fn test_coins_change_optimize(coins: Vec<i32>, amount: i32, expected: i32) {
-        assert_eq!(Solution::coin_change_optimize(coins, amount), expected);
+    fn test_coins_change_optimize(coins: Vec<i32>, amount: i32, expect: i32) {
+        assert_eq!(Solution::coin_change_optimize(coins, amount), expect);
     }
 }

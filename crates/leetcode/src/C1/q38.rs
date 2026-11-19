@@ -39,7 +39,7 @@ mod tests {
     #[rstest]
     #[case(1, String::from("1"))]
     #[case(4, String::from("1211"))]
-    fn test_count_and_say(#[case] n: usize, #[case] expected: String) {
-        assert_eq!(Solution::count_and_say(n), expected);
+    fn test_count_and_say(#[case] n: usize, #[case] expect: String) {
+        assert_eq!(Solution::count_and_say(n), expect);
     }
 }

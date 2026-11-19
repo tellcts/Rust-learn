@@ -19,8 +19,8 @@ mod tests {
     #[rstest]
     #[case(&mut [1,2], 3, &[2,1])]
     #[case(&mut [1,2,3,4,5,6,7], 3, &[5,6,7,1,2,3,4])]
-    fn test_rotate(#[case] nums: &mut [i32], #[case] k: i32, #[case] expected: &[i32]) {
+    fn test_rotate(#[case] nums: &mut [i32], #[case] k: i32, #[case] expect: &[i32]) {
         Solution::rotate(nums, k);
-        assert_eq!(nums, expected);
+        assert_eq!(nums, expect);
     }
 }

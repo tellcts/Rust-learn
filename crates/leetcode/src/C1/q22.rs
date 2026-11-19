@@ -40,7 +40,7 @@ mod tests {
     #[case(1,vec!["()"])]
     #[case(2, vec!["(())","()()"])]
     #[case(3,vec!["((()))","(()())","(())()","()(())","()()()"])]
-    fn test_generate_parenthesis(#[case] n: usize, #[case] expected: Vec<&str>) {
-        assert_eq!(Solution::generate_parenthesis(n), expected);
+    fn test_generate_parenthesis(#[case] n: usize, #[case] expect: Vec<&str>) {
+        assert_eq!(Solution::generate_parenthesis(n), expect);
     }
 }

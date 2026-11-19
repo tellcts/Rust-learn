@@ -69,7 +69,7 @@ mod tests {
     #[rstest]
     #[case(vec![0,0,0],1,0)]
     #[case(vec![-1,2,1,-4],1,2)]
-    fn test_three_sum_closest(#[case] nums: Vec<i32>, #[case] target: i32, #[case] expected: i32) {
-        assert_eq!(Solution::three_sum_closest(nums, target), expected);
+    fn test_three_sum_closest(#[case] nums: Vec<i32>, #[case] target: i32, #[case] expect: i32) {
+        assert_eq!(Solution::three_sum_closest(nums, target), expect);
     }
 }

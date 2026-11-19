@@ -42,7 +42,7 @@ mod tests {
     #[rstest]
     #[case(12, 3)]
     #[case(13, 2)]
-    fn test_num_squares(#[case] n: i32, #[case] expected: i32) {
-        assert_eq!(Solution::num_squares(n), expected);
+    fn test_num_squares(#[case] n: i32, #[case] expect: i32) {
+        assert_eq!(Solution::num_squares(n), expect);
     }
 }

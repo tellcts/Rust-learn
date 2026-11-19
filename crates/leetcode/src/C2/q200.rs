@@ -46,7 +46,7 @@ mod tests {
             ,
             3
     )]
-    fn test_num_islands(#[case] grid: Vec<Vec<char>>, #[case] expected: i32) {
-        assert_eq!(Solution::num_islands(grid), expected);
+    fn test_num_islands(#[case] grid: Vec<Vec<char>>, #[case] expect: i32) {
+        assert_eq!(Solution::num_islands(grid), expect);
     }
 }

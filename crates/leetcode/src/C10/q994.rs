@@ -63,7 +63,7 @@ mod tests {
                ,
                -1
     )]
-    fn test_oranges_rotting(#[case] grid: Vec<Vec<i32>>, #[case] expected: i32) {
-        assert_eq!(Solution::oranges_rotting(grid), expected);
+    fn test_oranges_rotting(#[case] grid: Vec<Vec<i32>>, #[case] expect: i32) {
+        assert_eq!(Solution::oranges_rotting(grid), expect);
     }
 }

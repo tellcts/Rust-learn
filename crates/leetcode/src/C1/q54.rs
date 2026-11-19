@@ -49,7 +49,7 @@ mod tests {
             ,
         vec![1, 2, 3, 6, 9, 8, 7, 4, 5]
     )]
-    fn test_spiral_order(#[case] matrix: Vec<Vec<i32>>, #[case] expected: Vec<i32>) {
-        assert_eq!(Solution::spiral_order(matrix), expected);
+    fn test_spiral_order(#[case] matrix: Vec<Vec<i32>>, #[case] expect: Vec<i32>) {
+        assert_eq!(Solution::spiral_order(matrix), expect);
     }
 }

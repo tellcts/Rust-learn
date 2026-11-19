@@ -32,7 +32,7 @@ mod tests {
     #[case(vec![1, 2, 0], 3)]
     #[case(vec![3, 4, -1, 1], 2)]
     #[case(vec![7, 8, 9, 11, 12], 1)]
-    fn test_first_missing_positive(#[case] nums: Vec<i32>, #[case] expected: i32) {
-        assert_eq!(Solution::first_missing_positive(nums), expected);
+    fn test_first_missing_positive(#[case] nums: Vec<i32>, #[case] expect: i32) {
+        assert_eq!(Solution::first_missing_positive(nums), expect);
     }
 }

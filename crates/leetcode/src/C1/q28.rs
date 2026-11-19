@@ -35,15 +35,15 @@ mod tests {
     #[case(String::from("sadbutsad"), String::from("sad"), 0)]
     #[case(String::from("leetcode"), String::from("leeto"), -1)]
     #[case(String::from("tellcts"), String::from("tellctsespain"), -1)]
-    fn test_cases(#[case] haystack: String, #[case] needle: String, #[case] expected: i32) {}
+    fn test_cases(#[case] haystack: String, #[case] needle: String, #[case] expect: i32) {}
 
     #[apply(test_cases)]
-    fn test_str_str(haystack: String, needle: String, expected: i32) {
-        assert_eq!(Solution::str_str(haystack, needle), expected);
+    fn test_str_str(haystack: String, needle: String, expect: i32) {
+        assert_eq!(Solution::str_str(haystack, needle), expect);
     }
 
     #[apply(test_cases)]
-    fn test_str_str_opt(haystack: String, needle: String, expected: i32) {
-        assert_eq!(Solution::str_str_opt(haystack, needle), expected);
+    fn test_str_str_opt(haystack: String, needle: String, expect: i32) {
+        assert_eq!(Solution::str_str_opt(haystack, needle), expect);
     }
 }

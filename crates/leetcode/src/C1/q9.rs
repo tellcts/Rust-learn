@@ -46,15 +46,15 @@ mod tests {
     #[case(-121,false)]
     #[case(10, false)]
     #[case(12321, true)]
-    fn test_cases(#[case] x: i32, #[case] expected: bool) {}
+    fn test_cases(#[case] x: i32, #[case] expect: bool) {}
 
     #[apply(test_cases)]
-    fn test_is_palindrome(x: i32, expected: bool) {
-        assert_eq!(Solution::is_palindrome(x), expected);
+    fn test_is_palindrome(x: i32, expect: bool) {
+        assert_eq!(Solution::is_palindrome(x), expect);
     }
 
     #[apply(test_cases)]
-    fn test_is_palindrome_optimize(x: i32, expected: bool) {
-        assert_eq!(Solution::is_palindrome_optimize(x), expected);
+    fn test_is_palindrome_optimize(x: i32, expect: bool) {
+        assert_eq!(Solution::is_palindrome_optimize(x), expect);
     }
 }

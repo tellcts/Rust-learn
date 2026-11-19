@@ -71,8 +71,8 @@ mod tests {
     fn test_find_substring(
         #[case] s: String,
         #[case] words: Vec<String>,
-        #[case] expected: Vec<usize>,
+        #[case] expect: Vec<usize>,
     ) {
-        assert_eq!(Solution::find_substring(s, words), expected);
+        assert_eq!(Solution::find_substring(s, words), expect);
     }
 }

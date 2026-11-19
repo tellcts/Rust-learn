@@ -26,7 +26,7 @@ mod tests {
     #[rstest]
     #[case(&mut [1,1,2],2)]
     #[case(&mut [0,0,1,1,1,2,2,3,3,4],5)]
-    fn test_remove_duplicates(#[case] nums: &mut [i32], #[case] expected: usize) {
-        assert_eq!(Solution::remove_duplicates(nums), expected);
+    fn test_remove_duplicates(#[case] nums: &mut [i32], #[case] expect: usize) {
+        assert_eq!(Solution::remove_duplicates(nums), expect);
     }
 }

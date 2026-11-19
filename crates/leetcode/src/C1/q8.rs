@@ -52,7 +52,7 @@ mod tests {
     #[case(String::from("4193 with words"), 4193)]
     #[case(String::from("words and 987"), 0)]
     #[case(String::from("1337c0d3"), 1337)]
-    fn test_my_atoi(#[case] s: String, #[case] expected: i32) {
-        assert_eq!(Solution::my_atoi(s), expected);
+    fn test_my_atoi(#[case] s: String, #[case] expect: i32) {
+        assert_eq!(Solution::my_atoi(s), expect);
     }
 }

@@ -44,8 +44,8 @@ mod tests {
     fn test_merge_two_lists(
         #[case] l1: Option<Box<ListNode>>,
         #[case] l2: Option<Box<ListNode>>,
-        #[case] expected: Option<Box<ListNode>>,
+        #[case] expect: Option<Box<ListNode>>,
     ) {
-        assert_eq!(Solution::merge_two_lists(l1, l2), expected);
+        assert_eq!(Solution::merge_two_lists(l1, l2), expect);
     }
 }

@@ -31,7 +31,7 @@ mod tests {
     #[rstest]
     #[case(vec![1,1],1)]
     #[case(vec![1, 8, 6, 2, 5, 4, 8, 3, 7],49)]
-    fn test_max_area(#[case] height: Vec<i32>, #[case] expected: i32) {
-        assert_eq!(Solution::max_area(height), expected);
+    fn test_max_area(#[case] height: Vec<i32>, #[case] expect: i32) {
+        assert_eq!(Solution::max_area(height), expect);
     }
 }
